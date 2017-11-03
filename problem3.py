@@ -13,19 +13,25 @@ If the user says higher or lower, repeat the process. If the user says correct, 
 import random
 
 correct = False
+rpl = 1
+rph = 1000
 guess = 0
-usercorrect = ''
+usercorrect = ' '
 cont = 'n'
 
 while (cont != 'y'):
 	cont = input('do you have a number? (y/n) ')
 
 while (correct == False):
-	print (random.randint(1,1000))
+	if (usercorrect == 'h'):
+		rph = guess - 1
+	elif (usercorrect == 'l'):
+		rpl = guess + 1
+	guess = random.randint(rpl, rph)
+	print (guess)
 	usercorrect = input('Is this number correct, higher, or lower? (c/h/l) ')
 	if (usercorrect == 'c'):
 		correct = True
-	elif (usercorrect == 'h' or usercorrect == 'l'):
+	else:
 		print ('Then I will guess again.')
-
 print ('Yes! I win!')
